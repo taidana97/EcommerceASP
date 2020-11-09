@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@model BuildCompleteEcommerceWithASPNETCoreMVC.Models.Account;
+
+<div class="span9">
+    <ul class="breadcrumb">
+        <li><a asp-controller="home" asp-action="index">Home</a> <span class="divider">/</span></li>
+        <li class="active">Registration</li>
+    </ul>
+    <h3> Registration</h3>
+    <div class="well">
+        @if (ViewBag.exists != null)
+        {
+            <!-- /.box-alert -->
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <p style="margin:0px;">@ViewBag.exists</p>
+            </div>
+        }
+        <form class="form-horizontal" asp-controller="customer" asp-action="register" method="post">
+            <div class="control-group">
+                <label class="control-label" for="username">Username <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="username" placeholder="Username" required="required" asp-for="Username">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="password">Password <sup>*</sup></label>
+                <div class="controls">
+                    <input type="password" id="password" placeholder="Password" required="required" asp-for="Password">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="fullName">Full Name <sup>*</sup></label>
+                <div class="controls">
+                    <input type="text" id="fullName" placeholder="Full Name" asp-for="FullName">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="email">Email <sup>*</sup></label>
+                <div class="controls">
+                    <input type="email" id="email" placeholder="Email" asp-for="Email">
+                </div>
+            </div>
+
+
+
+            <div class="control-group">
+                <div class="controls">
+                    <input class="btn btn-large btn-success" type="submit" value="Save">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+

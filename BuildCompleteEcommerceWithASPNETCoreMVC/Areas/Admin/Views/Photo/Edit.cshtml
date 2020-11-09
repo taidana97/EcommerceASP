@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model BuildCompleteEcommerceWithASPNETCoreMVC.Models.Photo
+
+<section class="content-header">
+    <h1>
+        Edit Photo to @ViewBag.Product.Name
+    </h1>
+</section>
+
+<section class="content">
+    @if (TempData["error"] != null)
+    {
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- /.box-alert -->
+                <div class="alert alert-info alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-info"></i> Alert!</h4>
+                    Operation is too fast. Please try again
+                    <br />
+                    @TempData["error"]
+                </div>
+            </div>
+        </div>
+    }
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Photo Information</h3>
+                </div>
+
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form asp-area="admin"
+                      asp-controller="photo"
+                      asp-action="edit"
+                      method="post"
+                      enctype="multipart/form-data">
+
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputFile">Photo</label>
+                            <input type="file"
+                                   id="exampleInputFile"
+                                   accept="image/*"
+                                   name="formFile">
+                            <br />
+                            <img src="~/product/@Model.Name" width="120" />
+                        </div>
+
+
+                        <div class="checkbox">
+                            <label>
+                                <input class="checkbox" type="checkbox" asp-for="Status"> Status
+                            </label>
+                        </div>                        
+                    </div>
+
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <input type="hidden" asp-for="ProductId" />
+                        <input type="hidden" asp-for="Id" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+    <!-- /.row -->
+</section>
